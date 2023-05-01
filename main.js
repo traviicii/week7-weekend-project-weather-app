@@ -17,6 +17,86 @@ root.addEventListener('mousemove', e => {
 
 // End of background color styling
 
+
+// Renders the percentage points inside speedometers
+const renderPoints = () => {
+    const circles = document.querySelectorAll('.circle');
+    circles.forEach(elem => {
+        var dots = elem.getAttribute('data-dots')
+        var marked = elem.getAttribute('data-percent')
+        var percent = Math.floor(dots*marked/100);
+        var rotate = 360/dots;
+        var points = "";
+
+        for (let i = 0; i < dots; i++) {
+            points += `<div class="points" style="--i: ${i}; --rot: ${rotate}deg"></div>`;      
+        }
+        elem.innerHTML = points;
+
+        const pointsMarked = elem.querySelectorAll('.points');
+        for (let i = 0; i < percent; i++) {
+            pointsMarked[i].classList.add('marked')
+        }
+
+    })
+}
+
+const render = (data) => {
+
+    if (data) {
+        try {
+            let location = document.body.children[2].children[0].children[0].children[0].children[0]
+            let userTemp = document.body.children[2].children[0].children[0].children[1].children[1]
+            let userFeelsLike = document.body.children[2].children[0].children[0].children[2].children[1]
+            let userConditionIcon = document.body.children[2].children[0].children[0].children[3].children[1]
+            let userCondition = document.body.children[2].children[0].children[0].children[3].children[2]
+            let userWindSpeed = document.body.children[2].children[0].children[0].children[4].children[1]
+            // let userHumidity = document.querySelector('humidCircle')
+            userTemp.innerHTML = `${data.main.temp} ˚F`
+            userFeelsLike.innerHTML = `${data.main.feels_like} ˚F`
+            userConditionIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
+            userCondition.innerHTML = `${data.weather[0].main}`
+            userWindSpeed.innerHTML = `${data.wind.speed} mph`
+            // userHumidity.setAttribute('data-percent', data.main.humidity)
+
+            circleData = document.querySelector('.circleContainer')
+            circleData.innerHTML = `
+            <div class="box">
+            <div class="circle humidCircle" data-dots="100" data-percent="${data.main.humidity}" style="--bgColor: #ff0070"></div>
+            <div class="text">
+                <h2>${data.main.humidity}%</h2>
+                <h6>Humidity</small>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="circle" id="cloudCircle" data-dots="100" data-percent="${data.clouds.all}" style="--bgColor: #0f0"></div>
+            <div class="text">
+                <h2>${data.clouds.all}%</h2>
+                <h6>Cloud Cover</small>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="circle" id="visiCircle" data-dots="100" data-percent="${data.visibility * 100 / 10000}" style="--bgColor: #52a8ff"></div>
+            <div class="text">
+                <h2>${data.visibility * 100 / 10000}%</h2>
+                <h6>Visibility</small>
+            </div>
+        </div>
+        `
+        
+        renderPoints()
+        }
+        catch {
+            newHtml = document.createElement('h2')
+            newHtml.innerText = "something isn't right..."
+        }
+    }
+    
+}
+
+
 const key = "f3d6535acf9e0afa59403265ef2f8392"
 
 const getCoord = async (e) => {
@@ -80,26 +160,75 @@ const userWeather = async (userlatitude, userlongitude) => {
     const resu = await fetch(req)
     const data = await resu.json()
 
-    console.log(data)
-    console.log(data.name)
-    console.log('Feels Like: ', data.main.feels_like)
+    // console.log(data)
+    // console.log(data.name)
+    // console.log('Feels Like: ', data.main.feels_like)
 
-    // These target the <p> tags in the current weather bar
-    let userTemp = document.body.children[1].children[0].children[1].children[1]
-    let userFeelsLike = document.body.children[1].children[0].children[2].children[1]
-    let userCondition = document.body.children[1].children[0].children[3].children[1]
-    let userWindSpeed = document.body.children[1].children[0].children[4].children[1]
-    let userHumidity = document.body.children[1].children[0].children[5].children[1]
-    userTemp.innerHTML = `${data.main.temp} ˚F`
-    userFeelsLike.innerHTML = `${data.main.feels_like} ˚F`
-    userCondition.innerHTML = `${data.weather[0].main}`
-    userWindSpeed.innerHTML = `${data.wind.speed} mph`
-    userHumidity.innerHTML = `${data.main.humidity}%`
-
+    renderUser(data)
 
 }
 
-// console.log(document.body.children[1].children[0].children, 'here')
+
+
+const renderUser = (data) => {
+    if (data) {
+        try {
+            let location = document.body.children[2].children[0].children[0].children[0].children[0]
+            let userTemp = document.body.children[2].children[0].children[0].children[1].children[1]
+            let userFeelsLike = document.body.children[2].children[0].children[0].children[2].children[1]
+            let userConditionIcon = document.body.children[2].children[0].children[0].children[3].children[1]
+            let userCondition = document.body.children[2].children[0].children[0].children[3].children[2]
+            let userWindSpeed = document.body.children[2].children[0].children[0].children[4].children[1]
+            // let userHumidity = document.querySelector('humidCircle')
+            userTemp.innerHTML = `${data.main.temp} ˚F`
+            userFeelsLike.innerHTML = `${data.main.feels_like} ˚F`
+            userConditionIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
+            userCondition.innerHTML = `${data.weather[0].main}`
+            userWindSpeed.innerHTML = `${data.wind.speed} mph`
+            // userHumidity.setAttribute('data-percent', data.main.humidity)
+
+            circleData = document.querySelector('.circleContainer')
+            circleData.innerHTML = `
+            <div class="box">
+            <div class="circle humidCircle" data-dots="100" data-percent="${data.main.humidity}" style="--bgColor: #ff0070"></div>
+            <div class="text">
+                <h2>${data.main.humidity}%</h2>
+                <h6>Humidity</small>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="circle" id="cloudCircle" data-dots="100" data-percent="${data.clouds.all}" style="--bgColor: #0f0"></div>
+            <div class="text">
+                <h2>${data.clouds.all}%</h2>
+                <h6>Cloud Cover</small>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="circle" id="visiCircle" data-dots="100" data-percent="${data.visibility * 100 / 10000}" style="--bgColor: #52a8ff"></div>
+            <div class="text">
+                <h2>${data.visibility * 100 / 10000}%</h2>
+                <h6>Visibility</small>
+            </div>
+        </div>
+        `
+        
+        renderPoints()
+        
+            
+        }
+        catch (err) {
+            console.log(err, "Something isn't working...")
+        }
+    }
+}
+
+// console.log(document.getElementById('humidCircle').getAttribute('data-percent'), 'here')
+
+
+// data-percent="0"
+
 
 //END OF USER SPECIFIC WEATHER =============================================================
 
@@ -112,75 +241,7 @@ const visiPercent = (num) => {
 
 const container = document.querySelector('.weather')
 
-const render = (data) => {
-    container.innerHTML = ''
-    let newHTML
-    if (data) {
-        try {
-            newHTML = document.createElement('div')
-            newHTML.innerHTML = `
-            <div class="main">
 
-        <div class="container">
-            <div class="mainStats">
-                <div style="margin-bottom: 50px; white-space: nowrap; border-style: none none solid none;">
-                    <h4>${data.name}</h5>
-                </div>
-                <div>
-                    <h5>Current Temp</h5>
-                    <p>${data.main.temp} ˚F</p>
-                </div>
-                <div>
-                    <h5>Feels Like</h5>
-                    <p>${data.main.feels_like} ˚F</p>
-                </div>
-                <div>
-                    <h5>Condition</h5>
-                    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">
-                    <p>${data.weather[0].main}</p>
-                </div>
 
-                <div>
-                    <h5>Wind Speed</h5>
-                    <p>${data.wind.speed} mph</p>
-                </div>
-            </div>
 
-            <div>
-                <div class="box">
-                    <div class="circle" data-dots="100" data-percent="${data.main.humidity}" style="--bgColor: #ff0070"></div>
-                    <div class="text">
-                        <h2>${data.main.humidity}%</h2>
-                        <h6>Humidity</small>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="circle" data-dots="100" data-percent="70" style="--bgColor: #0f0"></div>
-                    <div class="text">
-                        <h2>${data.clouds.all}%</h2>
-                        <h6>Cloud Cover</small>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="circle" data-dots="100" data-percent="${visiPercent(data.visibility)}" style="--bgColor: #52a8ff"></div>
-                    <div class="text">
-                        <h2>${data.visibility}%</h2>
-                        <h6>Visibility</small>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-            `
-        }
-        catch {
-            newHtml = document.createElement('h2')
-            newHtml.innerText = "something isn't right..."
-        }
-    }
-    container.append(newHTML);
-}
 

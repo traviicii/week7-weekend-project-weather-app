@@ -1,0 +1,116 @@
+    <!-- <div class="main">
+
+        <div class="container">
+            <div class="mainStats">
+                <div style="margin-bottom: 50px; white-space: nowrap; border-style: none none solid none;">
+                    <h4>${data.name}</h5>
+                </div>
+                <div>
+                    <h5>Current Temp</h5>
+                    <p>400</p>
+                </div>
+                <div>
+                    <h5>Feels Like</h5>
+                    <p>400</p>
+                </div>
+                <div>
+                    <h5>Condition</h5>
+                    <p>icon</p>
+                    <p>400</p>
+                </div>
+
+                <div>
+                    <h5>Wind Speed</h5>
+                    <p>400</p>
+                </div>
+
+
+            </div>
+
+            <div>
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="90" style="--bgColor: #ff0070"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Humidity</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="70" style="--bgColor: #0f0"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Cloud Cover</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="80" style="--bgColor: #52a8ff"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Visibility</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+
+
+
+
+                <div class="main">
+
+        <div class="container">
+            <div class="mainStats">
+                <div style="margin-bottom: 50px; white-space: nowrap; border-style: none none solid none;">
+                    <h4>${data.name}</h5>
+                </div>
+                <div>
+                    <h5>Current Temp</h5>
+                    <p>${data.main.temp} ˚F</p>
+                </div>
+                <div>
+                    <h5>Feels Like</h5>
+                    <p>${data.main.feels_like} ˚F</p>
+                </div>
+                <div>
+                    <h5>Condition</h5>
+                    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">
+                    <p>${data.weather[0].main}</p>
+                </div>
+
+                <div>
+                    <h5>Wind Speed</h5>
+                    <p>${data.wind.speed} mph</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="${data.main.humidity}" style="--bgColor: #ff0070"></div>
+                    <div class="text">
+                        <h2>${data.main.humidity}%</h2>
+                        <h6>Humidity</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="70" style="--bgColor: #0f0"></div>
+                    <div class="text">
+                        <h2>${data.clouds.all}%</h2>
+                        <h6>Cloud Cover</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="${visiPercent(data.visibility)}" style="--bgColor: #52a8ff"></div>
+                    <div class="text">
+                        <h2>${data.visibility}%</h2>
+                        <h6>Visibility</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
