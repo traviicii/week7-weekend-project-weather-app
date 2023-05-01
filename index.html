@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <script src="main.js" defer></script>
+    <script src="styles/style.js" defer></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/backgrounds.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100&display=swap" rel="stylesheet">
+    <title>Travii's Weather App</title>
+</head>
+
+<body onload="userWeather()">
+
+    <h1 id="titleText">Travii's weather app!</h1>
+    <div style="display: flex; justify-content: center; margin-bottom: 20px">
+        <div class="sideWeather">
+            <h6 style="padding-bottom: 10px;">Your current weather</h3>
+                <div class="userStat">
+                    <p>Temp</p>
+                    <p>Loading...</p>
+                </div>
+                <div class="userStat">
+                    <p>Feels Like</p>
+                    <p>Loading...</p>
+                </div>
+                <div class="userStat">
+                    <p>Condition</p>
+                    <p>Loading...</p>
+                </div>
+                <div class="userStat">
+                    <p>Wind Speed</p>
+                    <p>Loading...</p>
+                </div>
+                <div class="userStat">
+                    <p>Humidity</p>
+                    <p>Loading...</p>
+                </div>
+        </div>
+    </div>
+
+    <form id="locationSearch">
+        <input placeholder="City, State" name="location" id="myLocation">
+        <button type="submit"><span class="material-symbols-outlined">
+                search
+            </span></button>
+    </form>
+
+    <div class="weather"></div>
+
+    <!-- <div class="main">
+
+        <div class="container">
+            <div class="mainStats">
+                <div style="margin-bottom: 50px; white-space: nowrap; border-style: none none solid none;">
+                    <h4>${data.name}</h5>
+                </div>
+                <div>
+                    <h5>Current Temp</h5>
+                    <p>400</p>
+                </div>
+                <div>
+                    <h5>Feels Like</h5>
+                    <p>400</p>
+                </div>
+                <div>
+                    <h5>Condition</h5>
+                    <p>icon</p>
+                    <p>400</p>
+                </div>
+
+                <div>
+                    <h5>Wind Speed</h5>
+                    <p>400</p>
+                </div>
+
+
+            </div>
+
+            <div>
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="90" style="--bgColor: #ff0070"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Humidity</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="70" style="--bgColor: #0f0"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Cloud Cover</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="100" data-percent="80" style="--bgColor: #52a8ff"></div>
+                    <div class="text">
+                        <h2>90%</h2>
+                        <h6>Visibility</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

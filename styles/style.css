@@ -1,0 +1,113 @@
+html, body {
+    margin: 0px;
+    height: 100%;
+    background: hsl(var(--h), 80%, 33%);
+    /* background: linear-gradient(to bottom, #202020, #111119); */
+    
+}
+
+* {
+    font-family: 'Martian Mono', monospace;
+    font-size: 15px;
+}
+
+#titleText {
+    border-style: none none solid none;
+    border-color: ;
+    max-width: 75%;
+    text-align:  right;
+    color: rgb(255, 255, 255, .75);
+}
+
+#locationSearch {
+    display: flex ;
+    justify-content: center;
+}
+
+#myLocation {
+    border-radius: 20px;
+    background-color: rgb(0,0,0,0.44);
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    padding:6px;
+    background-color: rgb(255, 255, 255, .75);
+    height: 38px;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.main {
+    display: flex;
+    justify-content: ;
+    align-items:;
+    margin-top: 20px;
+}
+
+.container {
+    height: 600px;
+    width: 600px;
+    border-style: ;
+    border-radius: 20px;
+    /* margin-top: 40px; */
+    background-image:;
+    background-color: rgba(15, 18, 19, 0.64);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.sideWeather {
+    /* background-image: linear-gradient(to right, rgba(0, 0, 81, 0.635), rgb(120, 118, 118),rgb(161, 161, 161),rgb(203, 203, 203), white); */
+    
+    width: 675px;
+    border-radius: 20px;
+    height: 90px;
+    text-align: center;
+    background-color: rgba(15, 18, 19, 0.64);
+    /* background: linear-gradient(to bottom, #202020, #111119); */
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255, .75);
+}
+
+.userStat {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    white-space: nowrap;
+}
+
+.userStat > p:nth-child(1) {
+    margin-bottom: 0px;
+    border-style: none none solid none;
+}
+
+.mainStats {
+    margin-right: 0px;;
+}
+
+.mainStats > div {
+    color: rgb(255, 255, 255, .75);
+    display: flex;
+    justify-content:;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.mainStats > div > h5 {
+    border-style: none none solid none;
+    max-width: fit-content;
+    border-color: rgb(121, 121, 121);
+}
