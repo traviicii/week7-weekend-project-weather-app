@@ -107,7 +107,7 @@ const getCoord = async (e) => {
 
     const place = e.target.location.value
 
-    let url = `http://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=1&appid=${key}`
+    let url = `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=1&appid=${key}`
     const res = await fetch(url)
     const coord = await res.json()
     getWeather(coord)
